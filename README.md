@@ -18,11 +18,15 @@ This project contains a small demonstration example for studying the Java Stream
   while only considering the first two orders from these post codes:
   
   - a sequence of loops
-  - nexted loops
+  - nested loops
   - a custom analysis pipeline
   - java streams
 
 ## Exercises
+
+- Estimatre runtime complexity of each solution
+- Use debugger to find out how streams work internally
+- Define your own analysis question and solve it in each paradigm
 
 ## License
 
