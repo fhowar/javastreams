@@ -9,6 +9,19 @@ This project contains a small demonstration example for studying the Java Stream
 
 ## Examples in this project 
 
+- The examples in this project are based on a model of a list of orders
+- Orders have customers and a number of items (products with quantity)
+- Customers have post codes
+ 
+- The project contains different solutions to the challenge of computing 
+  the number of apples to be delivered to post codes 45...
+  while only considering the first two orders from these post codes:
+  
+  - a sequence of loops
+  - nexted loops
+  - a custom analysis pipeline
+  - java streams
+
 ## Exercises
 
 ## License
