@@ -51,7 +51,7 @@ public class Loops {
         // count
         // reduce: List<OrderItem> -> Integer
         int applesToEssen = 0;
-        for (OrderItem oi : orderItems) {
+        for (OrderItem oi : appleItems) {
             applesToEssen += oi.getQuantity();
         }
 

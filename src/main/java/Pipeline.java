@@ -29,35 +29,19 @@ public class Pipeline {
         final boolean[] cancellationRequested = {false};
         final int[] applesToEssen = {0};
 
-        final Node<Integer> qtyCount = new Node<>() {
-            @Override
-            public void accept(Integer in) {
-                applesToEssen[0] += in;
+        final Node<Integer> qtyCount = in -> applesToEssen[0] += in;
+
+        final Node<OrderItem> oiToQty = in -> qtyCount.accept(in.getQuantity());
+
+        final Node<OrderItem> filterByProduct = in -> {
+            if (in.getProduct() == APPLE) {
+                oiToQty.accept(in);
             }
         };
 
-        final Node<OrderItem> oiToQty = new Node<>() {
-            @Override
-            public void accept(OrderItem in) {
-                qtyCount.accept(in.getQuantity());
-            }
-        };
-
-        final Node<OrderItem> filterByProduct = new Node<>() {
-            @Override
-            public void accept(OrderItem in) {
-                if (in.getProduct() == APPLE) {
-                    qtyCount.accept(in.getQuantity());
-                }
-            }
-        };
-
-        final Node<Order> orderToItems = new Node<>() {
-            @Override
-            public void accept(Order in) {
-                for (OrderItem oi : in.getItems()) {
-                    filterByProduct.accept(oi);
-                }
+        final Node<Order> orderToItems = in -> {
+            for (OrderItem oi : in.getItems()) {
+                filterByProduct.accept(oi);
             }
         };
 
@@ -74,12 +58,9 @@ public class Pipeline {
             }
         };
 
-        final Node<Order> ordersFrom45 = new Node<>() {
-            @Override
-            public void accept(Order in) {
-                if (in.getCustomer().getPostCode().startsWith("45")) {
-                    limitOrders.accept(in);
-                }
+        final Node<Order> ordersFrom45 = in -> {
+            if (in.getCustomer().getPostCode().startsWith("45")) {
+                limitOrders.accept(in);
             }
         };
 

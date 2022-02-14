@@ -31,6 +31,6 @@ public class OrderRepository {
                 new OrderItem(PIZZA, 1),
                 new OrderItem(BURGER, 1));
 
-        return new Order[] {falksOrder1, juliasOrder, falksOrder2, vishwasOrder};
+        return new Order[] {falksOrder1, vishwasOrder, juliasOrder, falksOrder2};
     }
 }

@@ -6,7 +6,7 @@ import services.OrderRepository;
 
 import static services.Products.APPLE;
 
-public class OneLoop {
+public class NestedLoops {
 
   public static void main(String[] args) {
 
@@ -25,9 +25,9 @@ public class OneLoop {
             applesToEssen += oi.getQuantity();
           }
         }
-      }
-      if (++count == 2) {
-        break;
+        if (++count == 2) {
+          break;
+        }
       }
     }
 
